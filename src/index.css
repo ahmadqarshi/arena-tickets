@@ -1,0 +1,85 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  /* Reset any vite-template styles */
+  background: unset;
+  color: unset;
+  font-size: unset;
+}
+
+/* Theme tokens – light is default, dark overrides */
+:root,
+[data-theme='light'] {
+  --bg: #eceef2;
+  --map: #f5f7fa;
+  --panel: #ffffff;
+  --border: #e4e7ec;
+  --text: #15171c;
+  --dim: #697184;
+  --chip: #f1f3f7;
+  --accent: #2f6bf3;
+}
+
+[data-theme='dark'] {
+  --bg: #0d1117;
+  --map: #0a0d12;
+  --panel: #141a23;
+  --border: #252d3a;
+  --text: #eef1f6;
+  --dim: #9aa6b8;
+  --chip: #1c2430;
+  --accent: #5b8cff;
+}
+
+/* Pulsing dot animation for the live indicator */
+@keyframes pulseDot {
+  0%   { box-shadow: 0 0 0 0   rgba(25, 164, 99, 0.5) }
+  70%  { box-shadow: 0 0 0 6px rgba(25, 164, 99, 0)   }
+  100% { box-shadow: 0 0 0 0   rgba(25, 164, 99, 0)   }
+}
+
+/* Ensure buttons inherit the app font */
+button,
+select {
+  font-family: inherit;
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Mobile layout overrides using data-role attributes */
+@media (max-width: 760px) {
+  [data-role='body'] {
+    flex-direction: column !important;
+  }
+  [data-role='map'] {
+    flex: 1 1 auto !important;
+    min-height: 230px !important;
+  }
+  [data-role='aside'] {
+    width: 100% !important;
+    border-left: none !important;
+    border-top: 1px solid var(--border) !important;
+    max-height: 50vh !important;
+  }
+  [data-role='toolbar'] {
+    top: 10px !important;
+    right: 10px !important;
+    gap: 6px !important;
+  }
+  [data-role='legend'] {
+    max-width: 60% !important;
+    gap: 6px 11px !important;
+    padding: 8px 10px !important;
+  }
+}
